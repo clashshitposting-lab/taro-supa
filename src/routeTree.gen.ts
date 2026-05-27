@@ -9,38 +9,251 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SignupRouteImport } from './routes/signup'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as PaginaInicialTesteRouteImport } from './routes/pagina-inicial-teste'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LeituraNovaRouteImport } from './routes/leitura.nova'
+import { Route as AuthenticatedOfertaRouteImport } from './routes/_authenticated/oferta'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as LeituraPreviaTempIdRouteImport } from './routes/leitura.previa.$tempId'
+import { Route as LeituraCheckoutTempIdRouteImport } from './routes/leitura.checkout.$tempId'
+import { Route as ApiPublicBootstrapAdminRouteImport } from './routes/api/public/bootstrap-admin'
+import { Route as AuthenticatedMapaAstralNovoRouteImport } from './routes/_authenticated/mapa-astral.novo'
+import { Route as AuthenticatedMapaAstralIdRouteImport } from './routes/_authenticated/mapa-astral.$id'
+import { Route as AuthenticatedLeituraIdRouteImport } from './routes/_authenticated/leitura.$id'
 
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaginaInicialTesteRoute = PaginaInicialTesteRouteImport.update({
+  id: '/pagina-inicial-teste',
+  path: '/pagina-inicial-teste',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRoute = AuthenticatedRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LeituraNovaRoute = LeituraNovaRouteImport.update({
+  id: '/leitura/nova',
+  path: '/leitura/nova',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedOfertaRoute = AuthenticatedOfertaRouteImport.update({
+  id: '/oferta',
+  path: '/oferta',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const LeituraPreviaTempIdRoute = LeituraPreviaTempIdRouteImport.update({
+  id: '/leitura/previa/$tempId',
+  path: '/leitura/previa/$tempId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeituraCheckoutTempIdRoute = LeituraCheckoutTempIdRouteImport.update({
+  id: '/leitura/checkout/$tempId',
+  path: '/leitura/checkout/$tempId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicBootstrapAdminRoute = ApiPublicBootstrapAdminRouteImport.update({
+  id: '/api/public/bootstrap-admin',
+  path: '/api/public/bootstrap-admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedMapaAstralNovoRoute =
+  AuthenticatedMapaAstralNovoRouteImport.update({
+    id: '/mapa-astral/novo',
+    path: '/mapa-astral/novo',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedMapaAstralIdRoute =
+  AuthenticatedMapaAstralIdRouteImport.update({
+    id: '/mapa-astral/$id',
+    path: '/mapa-astral/$id',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedLeituraIdRoute = AuthenticatedLeituraIdRouteImport.update({
+  id: '/leitura/$id',
+  path: '/leitura/$id',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/pagina-inicial-teste': typeof PaginaInicialTesteRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/signup': typeof SignupRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/oferta': typeof AuthenticatedOfertaRoute
+  '/leitura/nova': typeof LeituraNovaRoute
+  '/leitura/$id': typeof AuthenticatedLeituraIdRoute
+  '/mapa-astral/$id': typeof AuthenticatedMapaAstralIdRoute
+  '/mapa-astral/novo': typeof AuthenticatedMapaAstralNovoRoute
+  '/api/public/bootstrap-admin': typeof ApiPublicBootstrapAdminRoute
+  '/leitura/checkout/$tempId': typeof LeituraCheckoutTempIdRoute
+  '/leitura/previa/$tempId': typeof LeituraPreviaTempIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/pagina-inicial-teste': typeof PaginaInicialTesteRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/signup': typeof SignupRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/oferta': typeof AuthenticatedOfertaRoute
+  '/leitura/nova': typeof LeituraNovaRoute
+  '/leitura/$id': typeof AuthenticatedLeituraIdRoute
+  '/mapa-astral/$id': typeof AuthenticatedMapaAstralIdRoute
+  '/mapa-astral/novo': typeof AuthenticatedMapaAstralNovoRoute
+  '/api/public/bootstrap-admin': typeof ApiPublicBootstrapAdminRoute
+  '/leitura/checkout/$tempId': typeof LeituraCheckoutTempIdRoute
+  '/leitura/previa/$tempId': typeof LeituraPreviaTempIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteWithChildren
+  '/login': typeof LoginRoute
+  '/pagina-inicial-teste': typeof PaginaInicialTesteRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/signup': typeof SignupRoute
+  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/oferta': typeof AuthenticatedOfertaRoute
+  '/leitura/nova': typeof LeituraNovaRoute
+  '/_authenticated/leitura/$id': typeof AuthenticatedLeituraIdRoute
+  '/_authenticated/mapa-astral/$id': typeof AuthenticatedMapaAstralIdRoute
+  '/_authenticated/mapa-astral/novo': typeof AuthenticatedMapaAstralNovoRoute
+  '/api/public/bootstrap-admin': typeof ApiPublicBootstrapAdminRoute
+  '/leitura/checkout/$tempId': typeof LeituraCheckoutTempIdRoute
+  '/leitura/previa/$tempId': typeof LeituraPreviaTempIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/login'
+    | '/pagina-inicial-teste'
+    | '/reset-password'
+    | '/signup'
+    | '/dashboard'
+    | '/oferta'
+    | '/leitura/nova'
+    | '/leitura/$id'
+    | '/mapa-astral/$id'
+    | '/mapa-astral/novo'
+    | '/api/public/bootstrap-admin'
+    | '/leitura/checkout/$tempId'
+    | '/leitura/previa/$tempId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/login'
+    | '/pagina-inicial-teste'
+    | '/reset-password'
+    | '/signup'
+    | '/dashboard'
+    | '/oferta'
+    | '/leitura/nova'
+    | '/leitura/$id'
+    | '/mapa-astral/$id'
+    | '/mapa-astral/novo'
+    | '/api/public/bootstrap-admin'
+    | '/leitura/checkout/$tempId'
+    | '/leitura/previa/$tempId'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/login'
+    | '/pagina-inicial-teste'
+    | '/reset-password'
+    | '/signup'
+    | '/_authenticated/dashboard'
+    | '/_authenticated/oferta'
+    | '/leitura/nova'
+    | '/_authenticated/leitura/$id'
+    | '/_authenticated/mapa-astral/$id'
+    | '/_authenticated/mapa-astral/novo'
+    | '/api/public/bootstrap-admin'
+    | '/leitura/checkout/$tempId'
+    | '/leitura/previa/$tempId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
+  LoginRoute: typeof LoginRoute
+  PaginaInicialTesteRoute: typeof PaginaInicialTesteRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
+  SignupRoute: typeof SignupRoute
+  LeituraNovaRoute: typeof LeituraNovaRoute
+  ApiPublicBootstrapAdminRoute: typeof ApiPublicBootstrapAdminRoute
+  LeituraCheckoutTempIdRoute: typeof LeituraCheckoutTempIdRoute
+  LeituraPreviaTempIdRoute: typeof LeituraPreviaTempIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pagina-inicial-teste': {
+      id: '/pagina-inicial-teste'
+      path: '/pagina-inicial-teste'
+      fullPath: '/pagina-inicial-teste'
+      preLoaderRoute: typeof PaginaInicialTesteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,12 +261,114 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/leitura/nova': {
+      id: '/leitura/nova'
+      path: '/leitura/nova'
+      fullPath: '/leitura/nova'
+      preLoaderRoute: typeof LeituraNovaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/oferta': {
+      id: '/_authenticated/oferta'
+      path: '/oferta'
+      fullPath: '/oferta'
+      preLoaderRoute: typeof AuthenticatedOfertaRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/leitura/previa/$tempId': {
+      id: '/leitura/previa/$tempId'
+      path: '/leitura/previa/$tempId'
+      fullPath: '/leitura/previa/$tempId'
+      preLoaderRoute: typeof LeituraPreviaTempIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leitura/checkout/$tempId': {
+      id: '/leitura/checkout/$tempId'
+      path: '/leitura/checkout/$tempId'
+      fullPath: '/leitura/checkout/$tempId'
+      preLoaderRoute: typeof LeituraCheckoutTempIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/bootstrap-admin': {
+      id: '/api/public/bootstrap-admin'
+      path: '/api/public/bootstrap-admin'
+      fullPath: '/api/public/bootstrap-admin'
+      preLoaderRoute: typeof ApiPublicBootstrapAdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/mapa-astral/novo': {
+      id: '/_authenticated/mapa-astral/novo'
+      path: '/mapa-astral/novo'
+      fullPath: '/mapa-astral/novo'
+      preLoaderRoute: typeof AuthenticatedMapaAstralNovoRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/mapa-astral/$id': {
+      id: '/_authenticated/mapa-astral/$id'
+      path: '/mapa-astral/$id'
+      fullPath: '/mapa-astral/$id'
+      preLoaderRoute: typeof AuthenticatedMapaAstralIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/leitura/$id': {
+      id: '/_authenticated/leitura/$id'
+      path: '/leitura/$id'
+      fullPath: '/leitura/$id'
+      preLoaderRoute: typeof AuthenticatedLeituraIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
   }
 }
 
+interface AuthenticatedRouteChildren {
+  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedOfertaRoute: typeof AuthenticatedOfertaRoute
+  AuthenticatedLeituraIdRoute: typeof AuthenticatedLeituraIdRoute
+  AuthenticatedMapaAstralIdRoute: typeof AuthenticatedMapaAstralIdRoute
+  AuthenticatedMapaAstralNovoRoute: typeof AuthenticatedMapaAstralNovoRoute
+}
+
+const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
+  AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedOfertaRoute: AuthenticatedOfertaRoute,
+  AuthenticatedLeituraIdRoute: AuthenticatedLeituraIdRoute,
+  AuthenticatedMapaAstralIdRoute: AuthenticatedMapaAstralIdRoute,
+  AuthenticatedMapaAstralNovoRoute: AuthenticatedMapaAstralNovoRoute,
+}
+
+const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
+  AuthenticatedRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRoute: AuthenticatedRouteWithChildren,
+  LoginRoute: LoginRoute,
+  PaginaInicialTesteRoute: PaginaInicialTesteRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
+  SignupRoute: SignupRoute,
+  LeituraNovaRoute: LeituraNovaRoute,
+  ApiPublicBootstrapAdminRoute: ApiPublicBootstrapAdminRoute,
+  LeituraCheckoutTempIdRoute: LeituraCheckoutTempIdRoute,
+  LeituraPreviaTempIdRoute: LeituraPreviaTempIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
